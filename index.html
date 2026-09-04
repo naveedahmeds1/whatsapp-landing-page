@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ur" class="dark">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ultra WhatsApp - Modern Communication Platform</title>
-    <!-- Tailwind CSS Engine -->
+    <title>Ultra Messenger - Web Console</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -23,76 +23,138 @@
         }
     </script>
 </head>
-<body class="bg-zinc-950 text-zinc-100 font-sans antialiased selection:bg-brand-500 selection:text-black">
+<body class="bg-zinc-950 text-zinc-100 font-sans antialiased h-screen flex flex-col selection:bg-brand-500 selection:text-black">
 
-    <!-- Header / Navbar -->
-    <header class="sticky top-0 z-50 backdrop-blur-xl bg-zinc-950/80 border-b border-zinc-800/80 px-6 py-4">
-        <div class="max-w-6xl mx-auto flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-brand-500 flex items-center justify-center font-bold text-black text-xl shadow-lg shadow-brand-500/20">
-                    W
-                </div>
-                <span class="text-xl font-bold tracking-tight text-white">Ultra Messenger</span>
+    <!-- App Navigation Header -->
+    <header class="bg-zinc-900 border-b border-zinc-800 px-6 py-3 flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-brand-500 flex items-center justify-center font-bold text-black text-lg shadow-lg shadow-brand-500/20">
+                W
             </div>
-            <a href="#download" class="bg-brand-500 hover:bg-brand-600 text-black font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full transition-all duration-300 shadow-md">
-                Download App
+            <div>
+                <h1 class="text-sm font-bold tracking-tight text-white leading-none">Ultra Messenger Web</h1>
+                <span class="text-[10px] text-emerald-400 font-mono flex items-center gap-1 mt-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Encrypted Node Active
+                </span>
+            </div>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="clearChat()" class="text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-medium px-3 py-1.5 rounded-lg border border-zinc-700 transition-all">
+                Clear Memory
+            </button>
+            <a href="https://vercel.com" target="_blank" class="text-xs bg-brand-500 hover:bg-brand-600 text-black font-bold px-4 py-1.5 rounded-lg transition-all">
+                Live Cloud
             </a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="max-w-5xl mx-auto px-6 py-20 text-center space-y-8">
-        <div class="inline-flex items-center gap-2 bg-zinc-900 border border-zinc-800 px-4 py-1.5 rounded-full text-xs font-mono text-brand-500">
-            <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
-            <span>Next-Generation Messaging Infrastructure</span>
-        </div>
-
-        <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight leading-tight">
-            Fast, Secure & <br />
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-emerald-300">
-                End-To-End Encrypted
-            </span>
-        </h1>
-
-        <p class="text-zinc-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Experience ultra-low latency messaging, high-fidelity voice routing, and custom workspace management with zero compromises on security.
-        </p>
-
-        <div id="download" class="pt-6 flex flex-wrap justify-center gap-4">
-            <a href="#" class="bg-brand-500 hover:bg-brand-600 text-black font-bold text-sm px-8 py-4 rounded-xl shadow-xl shadow-brand-500/10 transition-all uppercase tracking-wider">
-                Download APK Direct 🚀
-            </a>
-            <a href="#features" class="bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-white font-semibold text-sm px-8 py-4 rounded-xl transition-all uppercase tracking-wider">
-                Explore Features
-            </a>
-        </div>
-    </section>
-
-    <!-- Feature Grid -->
-    <section id="features" class="max-w-6xl mx-auto px-6 py-16 border-t border-zinc-900">
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-zinc-900/50 border border-zinc-800/80 p-8 rounded-3xl space-y-4">
-                <div class="text-brand-500 text-2xl font-bold">⚡ Zero Latency</div>
-                <h3 class="text-xl font-bold text-white">Instant Delivery</h3>
-                <p class="text-xs text-zinc-400 leading-relaxed">Real-time dynamic WebSockets pipeline ensuring sub-millisecond message delivery worldwide.</p>
+    <!-- Interactive Interactive Chat Interface -->
+    <div class="flex-1 max-w-4xl w-full mx-auto p-4 flex flex-col min-h-0">
+        <!-- Messages Display Window -->
+        <div id="chat-window" class="flex-1 overflow-y-auto space-y-4 p-4 bg-zinc-900/40 border border-zinc-800 rounded-2xl mb-4 backdrop-blur-xl">
+            <!-- System Welcome Message -->
+            <div class="text-center my-2">
+                <span class="text-[10px] font-mono bg-zinc-800 text-zinc-400 px-3 py-1 rounded-full border border-zinc-700">
+                    🔒 End-to-End Encrypted Simulation
+                </span>
             </div>
-            <div class="bg-zinc-900/50 border border-zinc-800/80 p-8 rounded-3xl space-y-4">
-                <div class="text-brand-500 text-2xl font-bold">🔒 Encrypted</div>
-                <h3 class="text-xl font-bold text-white">Maximum Privacy</h3>
-                <p class="text-xs text-zinc-400 leading-relaxed">State-of-the-art cryptographic vault protocol protecting all your personal telemetry data.</p>
-            </div>
-            <div class="bg-zinc-900/50 border border-zinc-800/80 p-8 rounded-3xl space-y-4">
-                <div class="text-brand-500 text-2xl font-bold">🎨 Customizable</div>
-                <h3 class="text-xl font-bold text-white">Advanced UI</h3>
-                <p class="text-xs text-zinc-400 leading-relaxed">Fully adaptive dark themes, custom chat bubbles, and automated backup routines.</p>
+            <div class="flex flex-col items-start max-w-[80%]">
+                <div class="bg-zinc-800 border border-zinc-700 text-zinc-200 text-xs p-3 rounded-2xl rounded-tl-none">
+                    Welcome to Ultra Messenger Web. Type a message below or trigger an auto-reply test.
+                </div>
+                <span class="text-[9px] font-mono text-zinc-500 mt-1">System • Just now</span>
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="border-t border-zinc-900 py-8 text-center text-xs font-mono text-zinc-600">
-        © <script>document.write(new Date().getFullYear())</script> Ultra Messenger. Hosted securely on GitHub Pages.
-    </footer>
+        <!-- Message Input Console -->
+        <form id="chat-form" onsubmit="sendMessage(event)" class="flex gap-2 bg-zinc-900 p-2 rounded-xl border border-zinc-800">
+            <input 
+                type="text" 
+                id="message-input" 
+                placeholder="Type your message..." 
+                class="flex-1 bg-transparent text-xs text-white placeholder-zinc-500 px-3 py-2 outline-none font-sans"
+                required
+            />
+            <button 
+                type="submit" 
+                class="bg-brand-500 hover:bg-brand-600 text-black font-bold text-xs px-5 py-2 rounded-lg transition-all flex items-center gap-1 shadow-md"
+            >
+                Send 🚀
+            </button>
+        </form>
+    </div>
 
+    <!-- Scripting Engine -->
+    <script>
+        const chatWindow = document.getElementById('chat-window');
+        const messageInput = document.getElementById('message-input');
+
+        // Load saved chat from LocalStorage on launch
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedMessages = JSON.parse(localStorage.getItem('ultra_chat_logs') || '[]');
+            savedMessages.forEach(msg => renderMessage(msg.text, msg.sender, msg.time));
+        });
+
+        function sendMessage(e) {
+            e.preventDefault();
+            const text = messageInput.value.trim();
+            if (!text) return;
+
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            // Render user message
+            renderMessage(text, 'user', time);
+            saveMessage(text, 'user', time);
+            messageInput.value = '';
+
+            // Simulate Bot Automated Response after 1 second
+            setTimeout(() => {
+                const replies = [
+                    "Message received via Ultra WebSocket protocol.",
+                    "Encrypted telemetry verified. Signal clear.",
+                    "Bot node active: Request processed successfully.",
+                    "Latency check: 0.2ms. All systems operational."
+                ];
+                const randomReply = replies[Math.floor(Math.random() * replies.length)];
+                const botTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                
+                renderMessage(randomReply, 'bot', botTime);
+                saveMessage(randomReply, 'bot', botTime);
+            }, 1000);
+        }
+
+        function renderMessage(text, sender, time) {
+            const wrapper = document.createElement('div');
+            wrapper.className = `flex flex-col ${sender === 'user' ? 'items-end ml-auto' : 'items-start'} max-w-[80%]`;
+
+            const bubble = document.createElement('div');
+            bubble.className = sender === 'user' 
+                ? 'bg-brand-500 text-black font-medium text-xs p-3 rounded-2xl rounded-tr-none shadow-md'
+                : 'bg-zinc-800 border border-zinc-700 text-zinc-200 text-xs p-3 rounded-2xl rounded-tl-none';
+            bubble.textContent = text;
+
+            const meta = document.createElement('span');
+            meta.className = 'text-[9px] font-mono text-zinc-500 mt-1';
+            meta.textContent = `${sender === 'user' ? 'You' : 'Ultra Bot'} • ${time}`;
+
+            wrapper.appendChild(bubble);
+            wrapper.appendChild(meta);
+            chatWindow.appendChild(wrapper);
+
+            // Auto-scroll to bottom
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        function saveMessage(text, sender, time) {
+            const savedMessages = JSON.parse(localStorage.getItem('ultra_chat_logs') || '[]');
+            savedMessages.push({ text, sender, time });
+            localStorage.setItem('ultra_chat_logs', JSON.stringify(savedMessages));
+        }
+
+        function clearChat() {
+            localStorage.removeItem('ultra_chat_logs');
+            location.reload();
+        }
+    </script>
 </body>
 </html>
